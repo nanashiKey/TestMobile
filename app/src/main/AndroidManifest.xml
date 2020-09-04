@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MBGActivity"/>
+        <activity android:name=".activities.DetailMBGActivity"/>
     </application>
 
 </manifest>
