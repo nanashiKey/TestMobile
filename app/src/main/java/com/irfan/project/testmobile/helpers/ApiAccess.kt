@@ -1,6 +1,8 @@
 package com.irfan.project.testmobile.helpers
 
 import com.irfan.project.testmobile.models.GenresResponses
+import com.irfan.project.testmobile.models.MovieDetailsResponses
+import com.irfan.project.testmobile.models.MoviesByGenreResponses
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -40,11 +42,24 @@ interface ApiAccess {
      * @param language
      * @param page
      */
-    @GET("/movie/{movie_id}/lists")
+    @GET("movie/{movie_id}/lists")
     fun getMoviesByGenre(
-        @Query("api_key") apiKey : String,
         @Path("movie_id") movieId : Int,
+        @Query("api_key") apiKey : String,
         @Query("language") language: String,
         @Query("page") page: Int
-    )
+    ) : Call<MoviesByGenreResponses>
+
+    /**
+     * get detail of movies selected
+     * @param apiKey
+     * @param language
+     */
+    @GET("movie/{movie_id}")
+    fun getMovieDetail(
+        @Path("movie_id") movieId : Int,
+        @Query("api_key") apiKey : String,
+        @Query("language") language : String,
+        @Query("append_to_response") appendToResponse : String
+    ) : Call<MovieDetailsResponses>
 }

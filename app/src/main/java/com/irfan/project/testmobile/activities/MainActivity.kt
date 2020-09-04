@@ -1,10 +1,11 @@
-package com.irfan.project.testmobile
+package com.irfan.project.testmobile.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.irfan.project.testmobile.R
 import com.irfan.project.testmobile.adapters.GenresAdapter
 import com.irfan.project.testmobile.helpers.MethodHelpers
 import com.irfan.project.testmobile.viewmodels.GenresViewModel

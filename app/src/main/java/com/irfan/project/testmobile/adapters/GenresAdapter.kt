@@ -1,6 +1,7 @@
 package com.irfan.project.testmobile.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.irfan.project.testmobile.R
+import com.irfan.project.testmobile.activities.MBGActivity
 import com.irfan.project.testmobile.helpers.MethodHelpers
 import com.irfan.project.testmobile.models.Genres
 import com.irfan.project.testmobile.models.GenresResponses
@@ -42,6 +44,9 @@ class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder> {
         holder.tvTitle.text = genre.name
         holder.llayout.setOnClickListener {
             methodHelpers.showShortToast("genre id = ${genre.id} dan genre name = ${genre.name}")
+            val intent = Intent(ctx, MBGActivity::class.java)
+            intent.putExtra("genreid", genre.id)
+            ctx.startActivity(intent)
         }
     }
 

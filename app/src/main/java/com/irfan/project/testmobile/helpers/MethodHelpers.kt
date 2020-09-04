@@ -1,6 +1,7 @@
 package com.irfan.project.testmobile.helpers
 
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 
 
@@ -22,4 +23,9 @@ class MethodHelpers {
     fun showLongToast(msg : String){
         Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show()
     }
+
+    infix fun <T : Any> Context.pindahKe(classTujuan : Class<T>){
+        startActivity(Intent(this, classTujuan))
+    }
+
 }
