@@ -3,6 +3,7 @@ package com.irfan.project.testmobile.activities
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log.e
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,7 @@ import com.irfan.project.testmobile.adapters.MoviesByGenreAdapters
 import com.irfan.project.testmobile.helpers.MethodHelpers
 import com.irfan.project.testmobile.models.MoviesByGenre
 import com.irfan.project.testmobile.viewmodels.MoviesByGenreViewModels
+import kotlinx.android.synthetic.main.mbg_activity.*
 
 
 /**
@@ -42,10 +44,8 @@ class MBGActivity : AppCompatActivity(){
         rcView.layoutManager = layoutManager
         rcView.addItemDecoration(DividerItemDecoration(this@MBGActivity, DividerItemDecoration.VERTICAL))
         methodHelpers = MethodHelpers(this@MBGActivity)
-//        moviesByGenreAdapter = MoviesByGenreAdapters()
         modelizeData = ViewModelProviders.of(this@MBGActivity).get(MoviesByGenreViewModels::class.java)
         modelizeData.movieId = genreId
-//        modelizeData.page = 1
         getDatas()
 
         methodHelpers.setWindowsBar(this, R.color.blueDark)
@@ -72,6 +72,7 @@ class MBGActivity : AppCompatActivity(){
 
     fun getDatas(){
         isLoading = false
+        progbar.visibility = View.VISIBLE
         modelizeData.dataExecute.observe(this@MBGActivity, Observer {
             for(i in it.indices){
                 moviesLoaded!!.add(it.get(i))
@@ -87,6 +88,7 @@ class MBGActivity : AppCompatActivity(){
             }
             isLoading = true
             modelizeData.dataExecute.removeObservers(this@MBGActivity)
+            progbar.visibility = View.GONE
         }, 3000)
     }
 }
