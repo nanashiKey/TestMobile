@@ -7,12 +7,18 @@ import java.io.Serializable
  *   email : assidiq.irfan@gmail.com
  **/
 class MoviesByGenre (
-        var description : String,
-        var favorite_count : Int,
+        var popularity : Double,
+        var vote_count : Int,
+        var video : Boolean,
+        var poster_path : String,
         var id : Int,
-        var item_count : Int,
-        var iso_639_1 : String,
-        var list_type : String,
-        var name : String,
-        var poster_path : String
+        var adult : Boolean,
+        var backdrop_path : String,
+        var original_language : String,
+        var original_title : String,
+        var genre_ids : ArrayList<Int>,
+        var title :String,
+        var vote_average : Double,
+        var overview :String,
+        var release_date :String
     ) : Serializable

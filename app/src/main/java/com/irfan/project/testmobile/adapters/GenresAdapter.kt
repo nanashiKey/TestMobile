@@ -43,7 +43,6 @@ class GenresAdapter : RecyclerView.Adapter<GenresAdapter.GenresViewHolder> {
         val genre = genres.get(position)
         holder.tvTitle.text = genre.name
         holder.llayout.setOnClickListener {
-            methodHelpers.showShortToast("genre id = ${genre.id} dan genre name = ${genre.name}")
             val intent = Intent(ctx, MBGActivity::class.java)
             intent.putExtra("genreid", genre.id)
             ctx.startActivity(intent)

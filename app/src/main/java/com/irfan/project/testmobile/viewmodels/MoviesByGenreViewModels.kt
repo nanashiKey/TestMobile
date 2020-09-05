@@ -25,7 +25,7 @@ class MoviesByGenreViewModels : ViewModel(){
     val apiKey  = Const.apiKey
     val language  = Const.language
     var movieId : Int ?= null
-    var page : Int ?= null
+    var page : Int = 1
 
     var listMoviesByGenre : MutableLiveData<ArrayList<MoviesByGenre>>? = null
     val dataExecute : LiveData<ArrayList<MoviesByGenre>>
@@ -44,7 +44,7 @@ class MoviesByGenreViewModels : ViewModel(){
             .build()
 
         val apiAccess = retrofit.create(ApiAccess::class.java)
-        val loadMoviesByGenre = apiAccess.getMoviesByGenre(movieId!!,apiKey, language, page!!)
+        val loadMoviesByGenre = apiAccess.getMoviesByGenre(apiKey, language, page, movieId!!)
         loadMoviesByGenre.enqueue(object : Callback<MoviesByGenreResponses>{
             override fun onFailure(call: Call<MoviesByGenreResponses>, t: Throwable) {
                 e("TAGERROR", t.message!!)

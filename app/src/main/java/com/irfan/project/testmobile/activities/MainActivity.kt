@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
         modelizeData.dataExecute.observeForever {
             genresAdapter = GenresAdapter(this@MainActivity, it)
             rcView.adapter = genresAdapter
-            methodHelpers.showLongToast("cek " +genresAdapter.genres.size)
         }
 
+        methodHelpers.setWindowsBar(this, R.color.blueDark)
+        methodHelpers.setNavBackgroundLuna(this, R.color.blueDark)
     }
 }

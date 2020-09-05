@@ -12,5 +12,6 @@ class Const {
         val language = "en-US"
         val baseUrlPosterPath = "https://image.tmdb.org/t/p/"
         val imageSize = "w500"
+        val youtubeAPI = "AIzaSyDcXDdHBFwFZEOMq0XZbDhRfX2ialTxpXA"
     }
 }

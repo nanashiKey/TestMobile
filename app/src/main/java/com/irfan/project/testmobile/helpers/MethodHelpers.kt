@@ -2,7 +2,10 @@ package com.irfan.project.testmobile.helpers
 
 import android.content.Context
 import android.content.Intent
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 
 /**
@@ -17,15 +20,27 @@ class MethodHelpers {
     constructor(ctx : Context){
         this.ctx = ctx
     }
+
     fun showShortToast(msg : String){
         Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show()
     }
+
     fun showLongToast(msg : String){
         Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show()
     }
 
-    infix fun <T : Any> Context.pindahKe(classTujuan : Class<T>){
-        startActivity(Intent(this, classTujuan))
+    fun setWindowsBar(saved : AppCompatActivity, color: Int){
+        val windows = saved.window
+        windows.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
+        windows.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        windows.setStatusBarColor(ContextCompat.getColor(ctx, color))
+    }
+
+    fun setNavBackgroundLuna(saved: AppCompatActivity, color : Int){
+        val windows = saved.window
+        windows.navigationBarColor = saved.resources.getColor(color)
     }
 
 }

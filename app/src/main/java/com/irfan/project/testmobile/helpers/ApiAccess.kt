@@ -3,6 +3,7 @@ package com.irfan.project.testmobile.helpers
 import com.irfan.project.testmobile.models.GenresResponses
 import com.irfan.project.testmobile.models.MovieDetailsResponses
 import com.irfan.project.testmobile.models.MoviesByGenreResponses
+import com.irfan.project.testmobile.models.ReviewsResponses
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -42,18 +43,19 @@ interface ApiAccess {
      * @param language
      * @param page
      */
-    @GET("movie/{movie_id}/lists")
+    @GET("discover/movie")
     fun getMoviesByGenre(
-        @Path("movie_id") movieId : Int,
         @Query("api_key") apiKey : String,
         @Query("language") language: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("with_genres") withGenres : Int
     ) : Call<MoviesByGenreResponses>
 
     /**
      * get detail of movies selected
      * @param apiKey
      * @param language
+     * @param appendToResponse
      */
     @GET("movie/{movie_id}")
     fun getMovieDetail(
@@ -62,4 +64,12 @@ interface ApiAccess {
         @Query("language") language : String,
         @Query("append_to_response") appendToResponse : String
     ) : Call<MovieDetailsResponses>
+
+    @GET("movie/{movie_id}/reviews")
+    fun getReviews(
+        @Path("movie_id") movieId :Int ,
+        @Query("api_key") apiKey : String,
+        @Query("language") language: String,
+        @Query("page") page : Int
+    ) : Call<ReviewsResponses>
 }

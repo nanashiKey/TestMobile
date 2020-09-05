@@ -80,4 +80,7 @@ class MovieDetailsResponses : Serializable {
 
     @SerializedName("vote_count")
     var voteCount : Long ?= null
+
+    @SerializedName("videos")
+    var videos : ResultsForVideo ?= null
 }
