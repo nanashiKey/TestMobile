@@ -30,10 +30,10 @@ class MoviesByGenreViewModels : ViewModel(){
     var listMoviesByGenre : MutableLiveData<ArrayList<MoviesByGenre>>? = null
     val dataExecute : LiveData<ArrayList<MoviesByGenre>>
         get() {
-            if(listMoviesByGenre == null){
+//            if(listMoviesByGenre == null){
                 listMoviesByGenre = MutableLiveData()
                 loadAllMoviesByGenres()
-            }
+//            }
             return listMoviesByGenre!!
         }
 
